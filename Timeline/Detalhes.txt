@@ -1,0 +1,17 @@
+Atualização em tempo real:
+
+Com o angular, a atulização em tempo real não é performático, sugiro uma API específica para 
+este fim, por exemplo os Socket.io, o que torna a atualização maisaficiente. 
+Neste projeto, desenvolvi uma api e um pequeno banco de dados no Visual Studio para poder testar 
+o método de "refresh" que consta no arquivo PdvendController.js, eu determinei um tempo, e assim 
+que este tempo é decorrido, a página atualiza, com uma API espécífica, métodos e funções da própria
+auxiliam neste trabalho, porém isto depende da arquitetura usada em todo o sistema.
+
+Por ser um framework basicamente MVC, a separação ds arquivos devem seguir este conceito, neste projeto
+dividi em pasta os tipos de arquivos, organizados por tipo e finalidade do arquivo.
+
+O layout desenvolvido foi construído todo com serviços e diretivas nativas do angular, porém em umcaso mais
+específico, criar serviços, diretivas e filters são possíveis.
+
+
+ 

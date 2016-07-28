@@ -1,0 +1,135 @@
+<html>
+<head>
+
+	<script src="Scripts/angular.min.js" ></script>
+	<script src="Scripts/jquery-1.11.2.min.js" ></script>	
+	<script src="Scripts/bootstrap.min.js" ></script>
+    <script src="App/Controllers/PdvendController.js"></script>
+	<link rel="stylesheet" href="Scripts/bootstrap.min.css">
+	
+	<style>
+    .bold {
+        font-weight: bold;
+    }
+
+    .padding0 {
+        padding: 0;
+    }
+
+    .margin0 {
+        margin: 0 !important;
+    }
+
+    .nota {
+        color: #87CEFA;
+    }
+
+    .nomeGerente {
+        border: solid 1px black;
+        color: #fff;
+        background-color: black;
+        margin: 0 3% 0 3%;
+        padding: 0 2% 0 2%;
+        border-radius: 20%;
+    }
+
+    .left {
+        float: left;
+    }
+
+    .right {
+        float: right;
+    }
+
+    .imagem {
+        HEIGHT: 27PX !important;
+        MARGIN: 0 0 0 3% !important;
+    }
+
+    .imagemDireita {
+        HEIGHT: 27PX !important;
+        MARGIN: 0 0 0 51% !important;
+    }
+
+    .dataVenda {
+        font-size: 10px;
+    }
+
+    .bolinha {
+        width: 16px;
+        height: 13px;
+    }
+
+    .retaVertical {
+        margin: 0 0 0 53% !important;
+    }
+
+    .alignLeft {
+        text-align: left;
+    }
+
+    .alignRight {
+        text-align: right;
+    }
+ 
+</style>
+</head>
+<body>
+<div ng-app="app" ng-controller="PdvendController" class="container">
+    <div ng-repeat="data in DataVendas">
+        <div class="col-md-12 text-center">
+            <b>{{data}}</b><br />
+            <img class="bolinha" src="Img/bolinha.png" />
+        </div>
+        <div class="row col-md-12" ng-repeat="vendas in Vendas" ng-if="vendas.Data == data">
+            <div ng-if="$index % 2 != 0" class="padding0">
+                <div class="col-md-5"></div>
+                <div class="col-md-2 padding0">
+                    <img src="Img/retaVertical.png" class="retaVertical margin0" /><br />
+                    <img src="Img/dinheiro.png" class="imagemDireita" alt="" ng-if="vendas.TipoPagamento == 1" />
+                    <img src="Img/cartao.png" class="imagemDireita" alt="" ng-if="vendas.TipoPagamento == 2" />
+                    <img src="Img/cd.png" class="imagemDireita" alt="" ng-if="vendas.TipoPagamento == 3" />
+                    <span>-----------</span>
+                </div>
+            </div>
+            <div class="col-md-5" ng-class="$index % 2 == 0 ? 'left' : 'right'">
+                <div class="col-md-1">
+
+                </div>
+                <div class="col-md-11 bold">
+                    <span>CPF {{vendas.CPF}}</span>
+                    <span class="nomeGerente">{{vendas.Gerente}}</span>
+                    <span class="dataVenda">{{vendas.DataVenda}}</span>
+                </div>
+                <div class="col-md-1" id="btnLeft">
+                    <input type="button" class="btn btn-danger" ng-if="$index % 2 == 0" value="x" ng-click="Deletar($index)"/>
+                </div>
+                <div class="col-md-10 ">
+                    <div class="col-md-7 padding0">
+                        <div class="col-md-9 padding0">{{vendas.Vendedor}} vendeu: </div> <div class="col-md-3">{{vendas.ValorVenda}}</div>
+                        <div class="col-md-9 padding0">Lucro Bruto:</div> <div class="col-md-3"> {{vendas.LucroBruto}}</div>
+                    </div>
+                    <div class="col-md-5 nota">
+                        <div>Nota Fiscal</div>
+                        <div>{{vendas.NotaFiscal}}</div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <input type="button" class="btn btn-danger" ng-if="$index % 2 != 0" value="x" ng-click="Deletar($index)"/>
+                </div>
+            </div>
+            <div class="col-md-2 " ng-if="$index % 2 == 0">
+                <img src="Img/retaVertical.png" class="retaVertical margin0" /><br />
+                <span>--------------</span>
+                <img src="Img/dinheiro.png" class="imagem" alt="" ng-if="vendas.TipoPagamento == 1" />
+                <img src="Img/cartao.png" class="imagem" alt="" ng-if="vendas.TipoPagamento == 2" />
+                <img src="Img/cd.png" class="imagem" alt="" ng-if="vendas.TipoPagamento == 3" />
+            </div>
+        </div>
+    </div>
+</div>
+<body>
+</html>
+
+
+             
